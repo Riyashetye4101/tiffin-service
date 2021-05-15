@@ -1,0 +1,15 @@
+
+:root{
+    --primary-color:#f09898ce;
+}
+.xxx{
+    color:var(--primary-color);
+}
+.img1{
+    width: 29px;
+    height: 20px;
+    color: antiquewhite;
+}
+.span{
+	color: var(--primary-color)
+}

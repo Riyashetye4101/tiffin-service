@@ -1,0 +1,35 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div class="container">
+	<h3>  List of Tiffin Services Providers
+	</h3>
+    <hr>
+    <form class="d-flex ml-auto" method=POST action='{% url "home" %}'>
+    	{% csrf_token %}
+        <input class="form-control me-2 w-100" type="search" placeholder="Search the tiffin service Provider in your city " aria-label="Search" name='search'>
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form><br>
+      {% for company in companies %}
+    
+		 <div class="card">
+		  <div class="card-header "> 
+	                {{company.company_name}}
+	                
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title"></h5>
+		    <p class="card-text">
+		    	<strong>Email id :</strong> {{company.user.email}}<br>
+		    	<strong>Phone no :</strong> {{company.phone_no}}<br>
+		    	<strong>State :</strong> {{company.state}}<br>
+		    	<strong>City :</strong> {{company.city}}<br>
+		    
+				<a href="{% url 'details' company.user.id %}" class="btn btn-outline-info btn-md ">know more details</a>
+				
+		    </p>
+		       
+		  </div>
+        {% endfor %}
+
+</div>
+{% endblock %}

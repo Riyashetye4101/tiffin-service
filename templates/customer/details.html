@@ -1,0 +1,36 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<center>
+<div class="container">
+	    <div class="card text-center">
+		  <div class="card-header">
+		    {{tsp.admin_name}}
+		  </div>
+		  <div class="card-body">
+		    <h3 class="card-title">{{tsp.company_name}}</h3><br>
+		    <p class="card-text">
+		         <h5>Contact details:</h5>
+			     <strong>Email id :</strong>{{tsp.user.email}}<br>
+		    	 <strong>Phone no :</strong>{{tsp.phone_no}}<br>
+		    	 <strong>Alternat phone no :</strong>{{tsp.alt_phone_no}}<br><br>
+		    	 <h5> Address details :</h5>
+		    	 {{tsp.state}}, {{tsp.city}},{{tsp.pin_no}},
+		    	 {{tsp.Area_name}},
+		    	 {{tsp.land_mark}},
+		    	 {{tsp.building_name}},
+		    	 {{tsp.flate_number}}
+		    </p>
+		    {% if login %}
+		    <p class="text-danger">* you have already selected this tiffin service provider</p>
+			<a href="#" class="btn btn-primary btn-lg disabled" tabindex="-1" role="button" aria-disabled="true">select for service</a>
+		    {% else %}
+		    <a href="{% url 'add_sp' tsp.user.id %}" class="btn btn-primary">select for service</a>
+		    {% endif %}
+		  </div>
+		  
+		</div>
+		<br><br>
+
+</div>
+</center>
+{% endblock %}

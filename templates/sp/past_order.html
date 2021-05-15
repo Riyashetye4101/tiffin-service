@@ -1,0 +1,123 @@
+{% extends 'sp/main1.html' %}
+{% block content %}
+<br>
+  <div class="container">
+  	<div class="row">
+		<div class="card w-100">
+		  <div class="card-header">
+		   Your order detail
+		  </div>
+		  <div class="card-body">
+		    <blockquote class="blockquote mb-0">
+		    <div class="row">
+		    <div class="col">
+		    	<p>
+		        name:- {{order.customer.user.first_name}} {{order.customer.user.last_name}}<br>
+		      	email:- {{order.customer.user.email}}<br>
+		      	contact no:- {{order.customer.phone_number}} <br>
+		      	Total amount :- {{order.total_amount}}
+		      </p>
+		    </div>
+		    <div class="col">
+		    	Delivered address :-	
+		    	<br>{{add.state}}, {{add.city}}, {{add.pin_no}},<br>{{add.Area_name}}, {{add.land_mark}}, <br>
+		    	{{add.building_name}}, {{add.flate_number}}
+		    </div>
+		    
+		    </div>
+		    <br>
+		    <center>
+		    	<h5>Payment method:- Cash on delivery </h5>
+		      </center><br>
+		      <center>
+		    	
+		      </center>
+		      <div class="col">
+		      	 <h5>Ordered item details :-</h5>
+		      	 <div class="table-responsive">
+		      	 	<table class="table">
+						  <thead>
+						    <tr>
+						      <th >Item name</th>
+						      <th >quatity</th>
+						      <th >price</th>
+						    </tr>
+						  </thead>
+						  <tbody>
+						  	{% for i in menu %}
+						    <tr>
+						      
+						      <td>{{i.item_name}}</td>
+						      <td>{{i.quantity}}</td>
+						      <td>{{i.price}}</td>
+						    </tr>
+						    {% endfor %}
+						  </tbody>
+						</table>
+		      	 </div>
+		      </div>
+			</blockquote>
+			</div>
+		</div>
+  	</div>
+  </div>
+
+
+
+{% endblock %}
+<div class="col-md-4">
+          <div class="card card-body">
+              <div class="card-title">
+                <h5 class='text-danger'>Address details</h5>
+              </div>
+              <hr>
+              <p><strong>city:</strong>  {{add.city}}</p>
+              <p><strong>zip code:</strong> {{add.pin_no}}</p>
+              <p><strong>Street/area:</strong> {{add.Area_name}}</p>
+              <p><strong>Land Mark:</strong> {{add.land_mark}}</p>
+              <p><strong>Building/house name:</strong> {{add.building_name}}</p>
+              <p><strong>flate no/house no:</strong> {{add.flate_number}}</p>
+          </div>
+      </div>
+      <div class="col-md-4">
+          <div class="card card-body">
+              <div class="card-title m-auto">
+                <h5 class='text-danger  '>selected Menu</h5>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-6">
+                  <h6>food items</h6>
+                </div>
+                <div class="col-sm-3">
+                  <h6>quatity</h6>
+                </div>
+                <div class="col-sm-3">
+                  <h6>price</h6>
+                </div>
+              </div>
+
+                <div class="row">
+                  <div class="col-6">
+                    {% for i in item %}
+                    {{i}}<br>
+                    {% endfor %}
+                  </div>
+                  <div class="col-3">
+                    {% for j in quantity %}
+                       {{j}}<br>
+                       {% endfor %}
+                  </div>
+                  <div class="col-3">
+                    {% for k in price %}
+                       {{k}}
+                       {% endfor %}
+                  </div>
+                </div><br>
+              <hr>
+              <div class="row">
+                <div class="col-sm-8">Total:-</div>
+                <div class="col-sm-4">Rs.400 </div>
+              </div>
+          </div>
+      </div>

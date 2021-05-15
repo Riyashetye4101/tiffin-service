@@ -1,0 +1,48 @@
+{% extends 'sp/main1.html' %}
+
+{% block content %}
+{% if order %}
+<div>
+<br>
+<div class="row">
+  <div class="col-8">
+    <form class="d-flex w-50">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+
+  </div>
+  <div class="col">
+      <h5 class="text-secondary">Total orders :- {{total}}</h5>   
+  </div>
+</div>
+<hr>
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+      <th >customer name</th>
+      <th >date of order</th>
+      <th >tiffin duration</th>
+      <th >last date of order</th>
+      <th> view order </th>
+    </tr>
+  </thead>
+  <tbody>
+    
+    {% for i in order %}
+    <tr>
+      <td>{{i.customer.user.first_name}} {{i.customer.user.last_name}}</td>
+      <td>{{i.date_of_order}}</td>
+      <td>{{i.duration}}</td>
+      <td>{{i.last_date}}</td>
+      <td><a href="{% url 'status' i.id %}" class="btn btn-primary w-50">view</a></td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+{% else %}
+<br>
+<center><h4 class="text-secondary">Still no order is place</h4></center>
+{% endif %}
+{% endblock %}

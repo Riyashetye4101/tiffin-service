@@ -1,0 +1,104 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div class="container">
+ 
+  <div class="card">
+    <div class="card-body">
+    <div class="card-title"><center> <h3 class='text-secondary'>{{company.company_name}}</h3></center></div>
+    <hr>
+  	<center>
+  	<div class="row">
+    	<div class="col">
+    		<h5 class='text-secondary'>Contact Detail :-</h5>
+		     <p class='text-secondary'>
+		     	email id :- {{company.user.email}}<br>
+		     	phone no :- {{company.phone_no}}<br>
+		     	Alternate phone no :- {{company.alt_phone_no}}
+		     </p>
+    	</div>
+    	<div class="col">
+    		<h5 class='text-secondary'>Address Detail :-</h5>
+		     <p class='text-secondary'>
+		     	{{company.state}},
+		     	{{company.city}},
+		     	{{company.pin_no}}<br>
+		     	{{company.Area_name}},
+		     	near {{company.land_mark}}<br>
+		     	{{company.building_name}}
+		     	{{company.flate_number}}
+		     </p>
+    	</div>
+    </div>
+  	</center>
+  	    <div class="card">
+  	    	<div class="card-body">
+  	    		{% if check %}
+  	    		<center>
+                    <div class="row">
+                    	<div class="col">
+                    		<h4 class="text-secondary">Your order Duration :</h4>
+                    		<p>
+                    			<h6 class="text-secondary">Tiffin starting date :</h6>
+                    			
+                    			<h6 class="text-secondary">Tiffin last date : </h6>
+                    			
+                    		</p>
+                    	</div>
+
+                    	<div class="col">
+                    		<h4 class="text-secondary">{{order.duration}}</h4>
+                    		<h6 class="text-secondary">{{order.date_of_order}}</h6>
+                    		<h6 class="text-secondary">{{order.last_date}}</h6>
+
+                    	</div>
+                    </div>
+                    </center>
+                    <div class="card">
+					<div class="card-body">
+						<center>
+						<div class="row">
+							<div class="col">
+								<a class='btn btn-outline-secondary w-50' 
+								href="{% url 'visite' order.id %}">update Menu</a>
+							</div>
+							<div class="col">
+								<a class='btn btn-outline-primary w-50' 
+								href="{% url 'address' order.id %}">update address</a>
+							</div>
+							<div class="col">
+								<a class='btn btn-outline-info w-50' href="{% url 'tiffin' order.id %}">view tiffin details</a>
+							</div>
+						</div>
+						</center>
+					</div>
+				</div>
+  	    		{% else %}
+  	    		
+  	    		<center>
+  	    			<h5 class="text-secondary">company time for tiffin delivery :</h5>
+  	    			<p class="text-secondary"> from : {{company.time}}
+  	    			 to : {{company.to}}
+  	    			</p>
+  	    			<hr>
+				  	<div class="dropdown">
+				    <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+				      Select duration 
+				    </button>
+				    <div class="dropdown-menu">
+				      <a class="dropdown-item" href="{% url 'duration' '7' company.user.id %}">For one Week</a>
+				      <a class="dropdown-item" href="{% url 'duration' '31'  company.user.id %}">For one month</a>
+				      <a class="dropdown-item-text" href="{% url 'duration' '183' company.user.id %}">For six month</a>
+				      <a class="dropdown-item-text" href="{% url 'duration' '365' company.user.id %}">For one year</a>
+				    </div>
+				  </div>
+				</div>
+			    </center>
+			    
+				{% endif %}
+				
+  	    </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

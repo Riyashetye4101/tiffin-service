@@ -1,0 +1,16 @@
+{% extends 'register/base.html' %}
+{% block content %}
+<center>
+	<h3><strong>Register</strong></h3><br><br>
+	<!-- {% if submitted %}
+    you have submitted form successfully
+	{% else %} -->
+     <form  method=POST>
+		{% csrf_token %}
+		{{form.as_p}}
+		<input type="submit" name="submit" value="submit" class="btn btn-success">
+	</form>
+<!-- 	{% endif %} -->
+	
+</center>
+{% endblock %}

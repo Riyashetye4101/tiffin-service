@@ -1,0 +1,87 @@
+{% extends 'sp/main1.html' %}
+{% block content %}
+
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <div class="card card-body">
+                     <div class="card-title">
+                         <h5 class="text-danger">customer details</h5>
+                     </div>
+                     <hr>
+                     <p><strong>Name :</strong> {{order.customer.user.first_name}} {{order.customer.user.last_name}}</p>
+                     <p><strong>Email id: </strong>{{order.customer.user.email}}</p>
+                     <p><strong>phone no:</strong> {{order.customer.phone_number}}</p>
+                     <p><strong>alternate phone number:</strong> {{order.customer.alt_phone_number}}</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-body">
+                <div class="card-title">
+                  <h5 class='text-danger'> delivery Address details:-</h5>
+                </div>
+                <hr>
+                <p><strong>State:</strong> {{add.state}}</p>
+                <p><strong>city:</strong> {{add.city}}</p>
+                <p><strong>zip code:</strong> {{add.pin_no}}</p>
+                <p><strong>Street/area:</strong> {{add.Area_name}}</p>
+                <p><strong>Land Mark:</strong> {{add.land_mark}}</p>
+                <p><strong>Building/house name:</strong> {{add.building_name}}</p>
+                <p><strong>flate no/house no:</strong> {{add.flate_number}}</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card card-body">
+                <div class="card-title m-auto">
+                  <h5 class='text-danger  '>selected Menu</h5>
+                </div>
+                <hr>
+                <div class="row">
+                  <div class="col-sm-4">
+                    <h6>food items</h6>
+                  </div>
+                  <div class="col-sm-4">
+                    <h6>quantity</h6>
+                  </div>
+                  <div class="col-sm-4">
+                    <h6>price</h6>
+                  </div>
+                </div><br>
+                {% for item in menu %}
+                <div class="row">
+                  <div class="col-sm-4">
+                    {{item.item_name}}
+                  </div>
+                  <div class="col-sm-4">
+                    {{item.quantity}}
+                  </div>
+                  <div class="col-sm-4">
+                     {{item.price}}
+                  </div>
+                </div>
+                {% endfor %}
+                <hr>
+                <div class="row">
+                  <div class="col-sm-8">Total:-</div>
+                  <div class="col-sm-4">{{order.total_amount}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+             <div class="card card-body">
+                 <div class="card-title">
+                    <h5 class='text-danger'> Tiffin duration  status:-</h5>
+                    <hr>
+                    <h4 class="text-info">Duration :- {{order.duration}}</h4>
+                    <h5 class="text-info"> date of order :- {{order.date_of_order}} </h5>
+                    <h5 class="text-info"> last date :-  {{order.last_date}}</h5>
+                 </div>
+             </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

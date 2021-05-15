@@ -1,0 +1,71 @@
+{% extends 'sp/main1.html' %}
+{% block content %}
+<br>
+ <div class="row">
+    <div class="container">
+      <div class="card">
+            <div class="card-header card-title">
+                    <center><strong>Update Menu</strong></center> 
+            </div>
+            <div class="card-body">
+              <form method=POST action="">
+                {% csrf_token %}
+                <center>
+                <div class="row g-3">
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" placeholder="item name" aria-label="Text" name='item'>
+                    </div>
+                    <div class="col-sm=4">
+                        <input type="text" class="form-control" placeholder="Price" aria-label="Text" name='price'>
+                    </div>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" placeholder="Category" aria-label="Text" name='category'>
+                    </div>
+                  </div>
+                <br>
+                  {% for message in messages %}
+                      <span class="text-danger">{{message}}<span>
+                  {% endfor %}
+                <input class='btn btn-lg btn-info' type="submit" name="submit" value='add to menu'>
+                </center>
+              </form>
+                 <!--  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p> -->
+                  <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+            </div>
+      </div>
+      </div>
+</div>
+<br><br>
+
+<br>
+<div class="row">
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col">Item name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Remove</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for item in menu %}
+                    <tr>
+                        <th scope="row">{{item.item_name}}</th>
+                        <td>Rs.{{item.price}}</td>
+                        <td>{{item.category}}</td>
+                        <td>
+                          <a href="{% url 'delete' item.id %}" class='btn btn-danger'>Remove</a>
+                        </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+
+              </table>
+        </div>
+    </div>
+
+</div>
+{% endblock %}

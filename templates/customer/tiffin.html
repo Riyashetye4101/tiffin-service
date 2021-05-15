@@ -1,0 +1,63 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div class="container">
+<div class="card">
+  <div class="card-header">
+    Current tiffin detail
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+     <center> <h5 class="text-secondary"> {{order.sp.company_name}} </h5></center>
+      <hr>
+    
+      	<div class="row">
+      	<div class="col">
+      	     <h5 class="text-secondary">Current Address details :</h5>
+      	     <p class="text-secondary">
+      	     	State :- {{address.state}}<br>
+      	     	city :-  {{address.city}}<br>
+      	     	zip code :- {{address.pin_no}}<br>
+      	     	Street/Area :- {{address.Area_name}}<br>
+      	     	landmark :- {{address.land_mark}}<br>
+      	     	Building details :- {{address.building_name}}, {{address.flate_number}}
+      	     </p>
+      	</div>
+      	<div class="col">
+      		<h5 class="text-secondary">Tiffin item details:</h5>
+      		<hr>
+      		<div class="row">
+      			<div class="col">
+      				<h6 class="text-secondary">Item name</h6>
+      			</div>
+      			<div class="col">
+      				<h6 class="text-secondary">Quantity</h6>
+      			</div>
+      			<div class="col">
+      				<h6 class="text-secondary">Price</h6>
+      			</div>
+      		</div>
+      		<hr>
+      		{% for i in menu %}
+      		<div class="row">
+      			<div class="col">
+      				<h6 class="text-secondary">{{i.item_name}}</h6>
+      			</div>
+      			<div class="col">
+      				<h6 class="text-secondary">{{i.quantity}}</h6>
+      			</div>
+      			<div class="col">
+      				<h6 class="text-secondary">{{i.price}}</h6>
+      			</div>
+      		</div>
+      		{% endfor %}
+      		<hr>
+      		<h6 class="text-secondary"> Total amount :- </h6>{{order.total_amount}}
+      	</div>
+      </div>
+     
+    </blockquote>
+  </div>
+</div>
+</div>
+
+{% endblock %}

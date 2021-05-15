@@ -1,0 +1,35 @@
+{% extends 'sp/main1.html' %}
+{% block content %}
+<br>
+<div class='container'>
+    <h3 class="text-secondary">Customer List</h3>
+    <hr>
+    <div class="table-responsive">
+        <table class="table table-hover">
+          <thead class="table-dark">
+            <tr>
+              <th>first name</th>
+              <th>last name</th>
+              <th>contact no</th>
+              <th>email id</th>
+              <th>date of added</th>
+              <th>view details</th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for i in cust %}
+            <tr>
+              <td>{{i.user.first_name}}</td>
+              <td>{{i.user.last_name}}</td>
+              <td>{{i.phone_number}}</td>
+              <td>{{i.user.email}}</td>
+              <td>{{i.date_create}}</td>
+              <td><a class="btn btn-primary" href='{% url "cd" i.user.id %}'>view details</a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+        
+    </div>
+</div>
+{% endblock %}

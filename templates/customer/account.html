@@ -1,0 +1,31 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div class="container">
+	<h3>  List of your selected tiffin service providers
+	</h3>
+    <hr>
+  
+      {% for company in tsp %}
+		 <div class="card">
+		  <div class="card-header "> 
+	                {{company.company_name}}
+	                
+		  </div>
+		  <div class="card-body">
+		    <h5 class="card-title"></h5>
+		    <p class="card-text">
+		    	<strong>Email id :</strong>{{company.user.email}}<br>
+		    	<strong>Phone no :</strong>{{company.phone_no}}<br>
+		    	<strong>State :</strong>{{company.state}}<br>
+		    	<strong>City :</strong>{{company.city}}<br>
+		    	<br>
+		    	<a href="{% url 'select' company.user.id %}" class="btn btn-outline-secondary btn-md w-25">visit</a>
+				<a href="{% url 'remove' company.user.id %}" class="btn btn-outline-danger btn-md w-25">cancel</a>
+		    </p>
+		  
+		  </div>
+        {% endfor %}
+
+</div>
+
+{% endblock %}

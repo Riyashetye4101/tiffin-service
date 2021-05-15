@@ -1,0 +1,79 @@
+{% extends 'customer/base.html' %}
+{% block content %}
+<div class="container">
+<div class="row"> 
+  <div class="card w-100">
+  <div class="card-body">
+  <center><h5 class="card-title text-info">Update Address Details:</h5></center>  
+    <form method=POST action="{% url 'address' order %}">
+      {% csrf_token %}
+    <div class="row g-3">
+      <div class="col-sm-4">
+        <input type="text" class="form-control" placeholder="State" aria-label="State" name="state" required>
+      </div>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" placeholder="City" aria-label="City" name="city" required>
+      </div>
+      <div class="col-sm-4">
+        <input type="text" class="form-control" placeholder="zip code" aria-label="Zip" name='pinno' required>
+      </div>
+    </div><br>
+    <div class="row g-3">
+      <div class="col-sm-3">
+        <input type="text" class="form-control" placeholder="Street/Area" aria-label="text" name='area' required>
+      </div>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" placeholder="Land mark" aria-label="text" name='landmark' required>
+      </div>
+      <div class="col-sm-3">
+        <input type="text" class="form-control" placeholder="Building name" aria-label="text" name='Building' required>
+      </div>
+      <div class="col-sm-2">
+        <input type="text" class="form-control" placeholder="House no" aria-label="text" name='houseno' required>
+      </div>
+    </div><br>
+    <center>
+    <input type="reset" name="reset" value="Reset" class="btn btn-danger">
+    <input type="submit" name="submit" value="submit" class="btn btn-primary">
+    </center>
+  </form>
+    
+  </div>
+</div>
+</div>
+<br>
+<hr>
+<center><h4 class="text-secondary">Previous Address details</h4></center>
+<hr>
+<br>
+<table class="table">
+  <thead class="table-dark">
+    <tr>
+         <th>State</th>
+         <th>City</th>
+         <th>Zip</th>
+         <th>Street/Area</th>
+         <th>Land Mark</th>
+         <th>Building name</th>
+         <th>house no</th>
+         <th>Date of create</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for i in address %}
+    <tr>
+      <td>{{i.state}}</td>
+      <td>{{i.city}}</td>
+      <td>{{i.pin_no}}</td>
+      <td>{{i.Area_name}}</td>
+      <td>{{i.land_mark}}</td>
+      <td>{{i.building_name}}</td>
+      <td>{{i.flate_number}}</td>
+      <td>{{i.date_create}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+</div>
+{% endblock %}
